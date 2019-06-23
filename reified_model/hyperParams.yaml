@@ -1,0 +1,27 @@
+word-sequence-embedder1:
+  seq-emb-type: global
+  recurrent-conf: {layers: 2, bi-directional: true, rnn-type: lstm, out-dim: 128,
+    in-dim: 128}
+  sub-embedder-conf: {seq-emb-type: BERT, out-dim: 128, normalize: true, dropout: 0.2}
+trainer: {decay-learning-rate: true, reporting-frequency: 1000, mini-batch-size: 5,
+  gradient-clipping: true, precomputation-embeddings: true, init-learning-rate: 0.002,
+  validation-frequency: -1, sparse-update: false, weight-decay: 0, type: Adam}
+main-vars: {terminal-rep-dim: 128, aux-tag-rep-dim: 0, word-recurrent-layers: 2, aux-recurrent-layers: 0}
+aux-tags-sequence-embedder:
+  seq-emb-type: global
+  recurrent-conf: {layers: 0, bi-directional: true, rnn-type: lstm, out-dim: 0, in-dim: 0}
+  sub-embedder-conf:
+    seq-emb-type: standard
+    embedder-conf: {emb-type: word-standard, out-dim: 0, w2i: RESOURCE_AUX2I}
+MLP:
+  activations: [tanh, logsoftmax]
+  sizes:
+  - [128, 0]
+  - 128
+  - RESOURCE_OUT_TAGS_SIZE
+word-sequence-embedder:
+  seq-emb-type: global
+  recurrent-conf: {layers: 2, bi-directional: true, rnn-type: lstm, out-dim: 128,
+    in-dim: 128}
+  sub-embedder-conf: {normalize: true, dropout: 0.2, out-dim: 128, ELMo-type: concat_top,
+    seq-emb-type: ELMo}
