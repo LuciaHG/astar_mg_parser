@@ -1,9 +1,9 @@
 A* MG Parser
 =========
 
-This folder contains the code for the A* MG parser described in the ACL 2019 paper "Wide-Coverage Neural A* Parsing for Minimalist Grammars", authored by John Torr, Miloš Stanojević, Mark Steedman and Shay Cohen.  It also contains the code for the supertagger created by Miloš Stanojević.  Please direction any questions about the parser itself to John at john.torr@cantab.net and any questions about the supertagger to Miloš at milosh.stanojevic@gmail.com.
+This folder contains the code for the A* MG parser described in the ACL 2019 paper "Wide-Coverage Neural A* Parsing for Minimalist Grammars", authored by John Torr, Miloš Stanojević, Mark Steedman and Shay Cohen.  It also contains the code for the supertagger created by Miloš Stanojević.  Please direct any questions about the parser itself to John at john.torr@cantab.net and any questions about the supertagger to Miloš at milosh.stanojevic@gmail.com.
 
-To use the parser, you will first need to install the supertagger (see below).  You will not need to do any training or testing, however; the models are included and the parser script will run the supertagger in test mode automatically.  Note that the parser uses Python2.7 whereas the Supertagger requires Python3.  If this is an issue you can try using the 2to3 command from the terminal to convert all the the python2 scripts to python3 scripts.  E.g.
+To use the parser, you will first need to install the supertagger (see below).  You will not need to do any training or testing, however; pretrained models are included and the parser script will run the supertagger in test mode automatically.  Note that the parser uses Python2.7 whereas the Supertagger requires Python3.  If this is an issue you can try using the 2to3 command from the terminal to convert all the python2.7 scripts to python3 scripts.  E.g.
 
 2to3 astar.py -w
 
@@ -16,10 +16,11 @@ Basic requirements for the parser:
 
 - pip install nltk
 
+
 Usage
 ----------
 
-To parse sentences you must first create a text file which contains one sentence per line.  Make sure the file is in the folder astar_mg_parser.  Then, cd into this folder from a terminal.  If the name of the file you created is 'sentences.txt' you would execute the following to parse the sentences using the Abstract version of the parser (see the paper for the difference between the Abstract and Reified parsers).
+To parse sentences you must first create a text file which contains one sentence per line.  Make sure the file is in the folder astar_mg_parser.  Then, cd into this folder from a terminal.  If the name of the file you created is 'sentences.txt' you must execute the following to parse the sentences using the Abstract version of the parser (see the paper for the difference between the Abstract and Reified parsers):
 
 ./astar.sh abstract_model abstract_data sentences.txt True
 
@@ -27,7 +28,7 @@ Or, to parse with the Reified parser:
 
 ./astar.sh reified_model reified_data sentences.txt False
 
-The elmo embeddings and supertagger will first be loaded and then parsing will commence.  When parsing has finished, you can find the trees inside abstract_model/parses or reified_model/parses.  You can use the script viewpd.py to visualise the trees in graph form using nltk's tree displaying tool.  To view the Xbar tree for sentence in line 5, for example, you would execute:
+The elmo embeddings and supertagger will first be loaded, after which parsing will commence.  When parsing is complete, you can find the trees inside abstract_model/parses or reified_model/parses.  You can use the script viewpd.py to visualise the trees in graph form.  To view the Xbar tree for the sentence in line 5, for example, you would execute:
 
 python viewpd.py -f abstract_model/parses -vp 4
 
@@ -43,7 +44,7 @@ Or the MG derived tree:
 
 python viewpd.py -f abstract_model/parses -vp 4 -derived
 
-This script can also be used for other purposes, such as to extract all syntactic or semantic dependencies from the Xbar trees (used for evaluation in the paper) or to search the trees for a given regex.  To see a full list of the functions and usages of this script, just execute:
+This script can also be used for other purposes, such as to extract all syntactic or semantic dependencies from the Xbar trees (used for evaluation in the paper) or to search the trees for a given string/regex.  To see a full list of the functions and usages of this script, just execute:
 
 python viewpd.py --help
 
