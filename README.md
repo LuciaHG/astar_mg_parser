@@ -33,15 +33,15 @@ python viewpd.py -f abstract_model/parses -vp 4
 
 You can also view the full MG derivation tree, with MG expressions at non-terminals:
 
-python viewpd.py -f parses -vp 4 -derivation_full
+python viewpd.py -f abstract_model/parses -vp 4 -derivation_full
 
 Or an abbreviated MG derivation tree with fine-grained selectional restrictions and agreement features removed, and with operation names at non-terminals:
 
-python viewpd.py -f parses -vp 4 -derivation
+python viewpd.py -f abstract_model/parses -vp 4 -derivation
 
 Or the MG derived tree:
 
-python viewpd.py -f parses -vp 4 -derived
+python viewpd.py -f abstract_model/parses -vp 4 -derived
 
 This script can also be used for other purposes, such as to extract all syntactic or semantic dependencies from the Xbar trees (used for evaluation in the paper) or to search the trees for a given regex.  To see a full list of the functions and usages of this script, just execute:
 
