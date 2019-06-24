@@ -57,19 +57,19 @@ Or, to parse with the Reified parser:
 
 The elmo embeddings and supertagger will first be loaded, after which parsing will commence.  When parsing is complete, you can find the trees inside abstract_model/parses or reified_model/parses.  You can use the script viewpd.py to visualise the trees in graph form.  To view the Xbar tree for the sentence in line 5, for example, you would execute:
 
-python2 viewpd.py -f abstract_model/parses -vp 4
+python2 viewpd.py -f abstract_model/parses -vp 0
 
 You can also view the full MG derivation tree, with MG expressions at non-terminals:
 
-python2 viewpd.py -f abstract_model/parses -vp 4 -derivation_full
+python2 viewpd.py -f abstract_model/parses -vp 0 -full_derivation
 
 Or an abbreviated MG derivation tree with fine-grained selectional restrictions and agreement features removed, and with operation names at non-terminals:
 
-python2 viewpd.py -f abstract_model/parses -vp 4 -derivation
+python2 viewpd.py -f abstract_model/parses -vp 0 -derivation
 
 Or the MG derived tree:
 
-python2 viewpd.py -f abstract_model/parses -vp 4 -derived
+python2 viewpd.py -f abstract_model/parses -vp 0 -derived
 
 This script can also be used for other purposes, such as to extract all syntactic or semantic dependencies from the Xbar trees (used for evaluation in the paper) or to search the trees for a given string/regex.  To see a full list of the functions and usages of this script, just execute:
 
