@@ -35,10 +35,7 @@ if change_dir:
 import argparse
 from timeout import timeout
 from decimal import *
-try:
-    from fibonacci_heap_mod import Fibonacci_heap
-except ImportError:
-    sys.stderr.write("\nWarning: Failed to import Fibonacci_heap!")
+from fibonacci_heap_mod import Fibonacci_heap
 from timeit import default_timer
 sys.setrecursionlimit(10000)
 brackets='()'

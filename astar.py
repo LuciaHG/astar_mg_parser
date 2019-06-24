@@ -287,7 +287,7 @@ if __name__ == '__main__':
         sys.stderr.write("\nNumber of sentences successfully parsed: "+str(num_sents_parsed)+"/"+str(num_sents_processed)+"\n")
         with open(args.model_dir[0]+"/"+"parses", "w") as parse_results:
             json.dump(tags_parses, parse_results)
-    sys.stderr.write("\nSaved parses in: "+args.model_dir[0]+"parses"+'\n')
+    sys.stderr.write("\nSaved parses in: "+args.model_dir[0]+"/parses"+'\n')
 
 
 
